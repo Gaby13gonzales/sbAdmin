@@ -1,3 +1,31 @@
+<?php 
+if (!empty($result['id'])) {
+    // EDITAR
+    $titulo = 'Editar Pessoa';
+    $action = 'update';
+    $id = $result['id'];
+    $nome = $result['nome'];
+    $cpf = $result['cpf'];
+    $idade = $result['idade'];
+    $telefone = $result['telefone'];
+    $email = $result['email'];
+    $endereco = $result['endereco'];
+    $observacao = $result['observacao'];
+} else {
+    // ADICIONAR
+    $titulo = 'Adicionar Pessoa';
+    $action = 'insert';
+    $id = '';
+    $nome = '';
+    $cpf = '';
+    $idade = '';
+    $telefone = '';
+    $email = '';
+    $endereco = '';
+    $observacao = '';
+}
+?>
+
 <?php include './views/includes/header.php'; ?>
 
     <div class="container">
@@ -10,41 +38,41 @@
                     <div class="col-lg-8">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Cadastro de Pessoa</h1>
+                                <h1 class="h4 text-gray-900 mb-4"><?= $titulo ?></h1>
                             </div>
-                            <form class="user" method="post" action="./pessoa.php?action=insert">
+                            <form class="user" method="post" action="./pessoa.php?action=<?= $action ?>">
+                                <input type="hidden" name="id" id="id" value="<?= $id ?>">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" name="nome" id="nome"
-                                            placeholder="Nome">
+                                        <input type="text" class="form-control form-control-user" name="nome" id="nome" placeholder="Nome" value="<?= $nome ?>">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" name="cpf" id="cpf"
-                                            placeholder="CPF">
+                                            placeholder="CPF" value="<?= $cpf ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" name="endereco" id="endereco"
-                                        placeholder="Endereço">
+                                        placeholder="Endereço" value="<?= $endereco ?>">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" name="telefone"
-                                            id="telefone" placeholder="Telefone">
+                                            id="telefone" placeholder="Telefone" value="<?= $telefone ?>">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" name="idade"
-                                            id="idade" placeholder="Idade">
+                                            id="idade" placeholder="Idade" value="<?= $idade ?>">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" name="email"
-                                            id="email" placeholder="E-mail">
+                                            id="email" placeholder="E-mail" value="<?= $email ?>">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" name="observacao"
-                                            id="observacao" placeholder="Observação">
+                                            id="observacao" placeholder="Observação" value="<?= $observacao ?>">
                                     </div>
                                 </div>  
                                 <br>
